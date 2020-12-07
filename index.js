@@ -1,14 +1,28 @@
-const axios = require('axios')
+const axios = require("axios");
 
-const getDetailFilms = async (data) => (
-    await axios.get(data)
-        .then(res => res.data)
-)
+const getDetailFilms = async (data) => {
+  let res = await axios.get(data);
 
-const getFilms = async () => (
-    await axios.get('https://swapi.dev/api/people/1')
-        .then(res => res.data.films.map(film => getDetailFilms(film)))
-        .then(res => Promise.all(res).then(res => console.log(res)))
-)
+  return res.data;
+};
 
-getFilms()
+const getFilms = async () => {
+  let url = "https://swapi.dev/api/people/1";
+
+  let getPeople = await axios.get(url);
+  let filmLinks1 = await getDetailFilms(getPeople.data.films[0]);
+  let filmLinks2 = await getDetailFilms(getPeople.data.films[1]);
+  let filmLinks3 = await getDetailFilms(getPeople.data.films[2]);
+  let filmLinks4 = await getDetailFilms(getPeople.data.films[3]);
+
+  let result = await Promise.all([
+    filmLinks1,
+    filmLinks2,
+    filmLinks3,
+    filmLinks4,
+  ]);
+
+  return result
+};
+
+getFilms().then(res => console.log(res))
