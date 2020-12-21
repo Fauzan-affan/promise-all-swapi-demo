@@ -1,0 +1,26 @@
+{
+  "name": "promise-all-swapi-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.0"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  },
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fauzan-affan/promise-all-swapi-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fauzan-affan/promise-all-swapi-demo/issues"
+  },
+  "homepage": "https://github.com/Fauzan-affan/promise-all-swapi-demo#readme"
+}

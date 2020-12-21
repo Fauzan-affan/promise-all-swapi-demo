@@ -1,19 +1,19 @@
 const axios = require("axios");
 
-const getDetailFilms = async (data) => {
+exports.getDetailFilms = async (data) => {
   let res = await axios.get(data);
 
   return res.data;
 };
 
-const getFilms = async () => {
+exports.getFilms = async () => {
   let url = "https://swapi.dev/api/people/1";
 
   let getPeople = await axios.get(url);
-  let filmLinks1 = await getDetailFilms(getPeople.data.films[0]);
-  let filmLinks2 = await getDetailFilms(getPeople.data.films[1]);
-  let filmLinks3 = await getDetailFilms(getPeople.data.films[2]);
-  let filmLinks4 = await getDetailFilms(getPeople.data.films[3]);
+  let filmLinks1 = getDetailFilms(getPeople.data.films[0]);
+  let filmLinks2 = getDetailFilms(getPeople.data.films[1]);
+  let filmLinks3 = getDetailFilms(getPeople.data.films[2]);
+  let filmLinks4 = getDetailFilms(getPeople.data.films[3]);
 
   let result = await Promise.all([
     filmLinks1,
@@ -25,4 +25,4 @@ const getFilms = async () => {
   return result
 };
 
-getFilms().then(res => console.log(res))
+// getFilms().then(res => console.log(res))
